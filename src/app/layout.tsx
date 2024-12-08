@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 
-
 export const metadata: Metadata = {
   title: "Le Duo Du Bistro",
   description: "Levende Fransk musikk til alle anledninger",

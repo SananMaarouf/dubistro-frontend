@@ -1,5 +1,15 @@
 "use client";
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
+import Autoplay from "embla-carousel-autoplay"
+
 interface TestimonialsProps {
   data: {
     title: string;
@@ -9,22 +19,38 @@ interface TestimonialsProps {
   }[];
 }
 
-export default function Testimonials({ data }:TestimonialsProps) {
+export default function Testimonials({ data }: TestimonialsProps) {
   return (
-    <section className="bg-gray-100 text-emerald-900 h-screen py-12">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">
-         Tilbakemeldinger
+    <section className="bg-white text-emerald-900 h-fit py-12">
+      <div className="w-full px-4">
+        <h2 className="
+          text-3xl font-bold 
+          text-center mb-8">
+          Tilbakemeldinger
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {data.map((testimonial, index) => (
-            <div key={index} className="bg-white p-4 rounded-lg shadow-lg">
-              <p className="text-lg mb-4">{testimonial.feedback}</p>
-              <p className="font-bold">{testimonial.who}</p>
-              <p>{testimonial.position}</p>
-            </div>
-          ))}
-        </div>
+        {/* feedback card container */}
+        <Carousel className="w-full md:w-2/3 lg:w-3/4 md:mx-auto"
+          opts={{loop: true }}
+          plugins={[Autoplay({
+            delay: 5000,
+          })]}
+        >
+        <CarouselNext/>
+        <CarouselPrevious/>
+          <CarouselContent>
+            {data.map((testimonial, index) => (
+              <CarouselItem key={index} className="lg:basis-1/2 my-4">
+                <div className="border p-4 rounded-lg shadow-md h-full flex flex-col">
+                  <p className="text-lg mb-4">{testimonial.feedback}</p>
+                  <div className="mt-auto">
+                    <p className="font-bold">{testimonial.who}</p>
+                    <p className="font-semibold">{testimonial.position}</p>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </div>
     </section>
   );

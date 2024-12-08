@@ -5,6 +5,8 @@ import imageUrlBuilder from "@sanity/image-url"; // Importing the imageUrlBuilde
 import { type SanityDocument } from "next-sanity"; // Importing the SanityDocument type from next-sanity for type checking
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types"; // Importing the SanityImageSource type for type checking
 import Testimonials from "@/components/testimonials";
+import Performance from "@/components/performances";
+import Footer from "@/components/footer";
 
 // Extracting projectId and dataset from the Sanity client configuration
 const { projectId, dataset } = client.config();
@@ -26,7 +28,6 @@ interface IntroProps {
     }
   ]
 }
-
 interface IntroImage {
   _key: string;
   asset: {
@@ -43,6 +44,18 @@ interface FeedbackProps {
   position: string;
 }
 
+interface PerformanceProps {
+  performanceType: string;
+  description: string;
+  ctaText: string;
+}
+
+interface FooterProps {
+  instagramURL: string;
+  cellNumber: number;
+  email: string;
+  address: string;
+}
 // Query to fetch the landing page data
 const LANDING_QUERY = `*[
   _type == "Landing"]
@@ -70,6 +83,23 @@ _type == "Testimonials"]
   position
 }`;
 
+const PERFORMANCE_QUERY = `*[
+  _type == "Performance"]
+  {
+    performanceType,
+    description,
+    ctaText
+  }`;
+
+const FOOTER_QUERY = `*[
+  _type == "Footer"]
+  {
+    instagramURL,
+    cellNumber,
+    email,
+    address
+  }`;
+
 // Function to build the URL for a given Sanity image source
 const urlFor = (source: SanityImageSource) =>
   projectId && dataset
@@ -81,10 +111,12 @@ const options = { next: { revalidate: 30 } };
 
 // The main component for the index page
 export default async function IndexPage() {
-  const [landing, intro, feedback] = await Promise.all([
+  const [landing, intro, feedback, performance, footer] = await Promise.all([
     client.fetch<SanityDocument[]>(LANDING_QUERY, {}, options),
     client.fetch<SanityDocument[]>(INTRO_QUERY, {}, options),
     client.fetch<SanityDocument[]>(FEEDBACK_QUERY, {}, options),
+    client.fetch<SanityDocument[]>(PERFORMANCE_QUERY, {}, options),
+    client.fetch<SanityDocument[]>(FOOTER_QUERY, {}, options),
   ]);
 
   const landingData = {
@@ -110,11 +142,27 @@ export default async function IndexPage() {
     who: item.who,
     position: item.position,
   }));
+
+  const performanceData = performance.map((item) => ({
+    performanceType: item.performanceType,
+    description: item.description,
+    ctaText: item.ctaText,
+  }));
+
+  const footerData = {
+    instagramURL: footer[0].instagramURL,
+    cellNumber: footer[0].cellNumber,
+    email: footer[0].email,
+    address: footer[0].address,
+  };
+
   return (
     <main>
       <Landing data={landingData as LandingProps} />
       <Intro data={introData as IntroProps} />
       <Testimonials data={feedbackData as FeedbackProps[]} />
-     </main>
+      <Performance data={performanceData as PerformanceProps[]} />
+      <Footer data={footerData as FooterProps} />
+    </main>
   );
 }
