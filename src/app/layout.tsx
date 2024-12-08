@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import { EB_Garamond } from 'next/font/google';
 
 export const metadata: Metadata = {
   title: "Le Duo Du Bistro",
   description: "Levende Fransk musikk til alle anledninger",
 };
+
+const garamond = EB_Garamond({
+  display: "swap",
+  subsets: ["latin"],
+  style: "normal",
+});
 
 export default function RootLayout({
   children,
@@ -15,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className="antialiased"
+        className={garamond.className}
       >
         <Navbar />
         {children}
