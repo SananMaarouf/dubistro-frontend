@@ -8,7 +8,7 @@ interface YT {
 }
 
 interface YTPlayer {
-  new (elementId: string, options: PlayerOptions): Player;
+  new(elementId: string, options: PlayerOptions): Player;
 }
 
 interface Player {
@@ -120,7 +120,9 @@ export default function Landing({ data }: LandingProps) {
         <h1 className="text-6xl font-bold text-white">
           {ctaText ?? 'Levende fransk musikk til alle anledninger '}
         </h1>
-        <button className='px-4 py-2 bg-white text-green-900 mt-5 rounded-lg text-4xl uppercase'>Book nå!</button>
+        <a href="mailto:duo@leduodubistro.no?subject=Booking">
+          <button className='px-4 py-2 bg-white text-green-900 mt-5 rounded-lg text-4xl uppercase'>Book nå!</button>
+        </a>
       </div>
 
       {/* mute button */}
