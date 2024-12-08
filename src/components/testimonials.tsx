@@ -35,9 +35,9 @@ export default function Testimonials({ data }: TestimonialsProps) {
             delay: 5000,
           })]}
         >
-        <CarouselNext/>
-        <CarouselPrevious/>
-          <CarouselContent>
+        <CarouselNext  className="hidden md:block"  />
+        <CarouselPrevious className="hidden md:block" />
+          <CarouselContent >
             {data.map((testimonial, index) => (
               <CarouselItem key={index} className="lg:basis-1/2 my-4">
                 <div className="border p-4 rounded-md shadow-md h-full flex flex-col">
