@@ -40,7 +40,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
           <CarouselContent>
             {data.map((testimonial, index) => (
               <CarouselItem key={index} className="lg:basis-1/2 my-4">
-                <div className="border p-4 rounded-lg shadow-md h-full flex flex-col">
+                <div className="border p-4 rounded-md shadow-md h-full flex flex-col">
                   <p className="text-lg mb-4">{testimonial.feedback}</p>
                   <div className="mt-auto">
                     <p className="font-bold">{testimonial.who}</p>
