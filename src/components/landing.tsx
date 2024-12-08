@@ -125,7 +125,7 @@ export default function Landing({ data }: LandingProps) {
 
       {/* mute button */}
       <motion.button
-        className="absolute bottom-12 right-12 z-20 p-4 rounded-full bg-white/50 backdrop-blur-sm "
+        className="absolute bottom-12 right-2 md:right-12 z-20 p-4 rounded-full bg-white/50 backdrop-blur-sm "
         onClick={() => setIsMuted(!isMuted)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}

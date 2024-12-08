@@ -32,7 +32,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
         <Carousel className="w-full md:w-2/3 lg:w-3/4 md:mx-auto"
           opts={{loop: true }}
           plugins={[Autoplay({
-            delay: 5000,
+            delay: 4000,
           })]}
         >
         <CarouselNext  className="hidden md:block"  />
