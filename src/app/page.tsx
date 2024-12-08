@@ -4,6 +4,7 @@ import Landing from "@/components/landing"; // Importing a custom Landing compon
 import imageUrlBuilder from "@sanity/image-url"; // Importing the imageUrlBuilder function from the Sanity image URL library
 import { type SanityDocument } from "next-sanity"; // Importing the SanityDocument type from next-sanity for type checking
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types"; // Importing the SanityImageSource type for type checking
+import Testimonials from "@/components/testimonials";
 
 // Extracting projectId and dataset from the Sanity client configuration
 const { projectId, dataset } = client.config();
@@ -19,8 +20,9 @@ interface IntroProps {
   title: string;
   description: string;
   imageURLS: [
-    { alt: string; 
-      url: string; 
+    {
+      alt: string;
+      url: string;
     }
   ]
 }
@@ -32,6 +34,13 @@ interface IntroImage {
   };
   alt: string;
   caption?: string;
+}
+
+interface FeedbackProps {
+  title: string;
+  feedback: string;
+  who: string;
+  position: string;
 }
 
 // Query to fetch the landing page data
@@ -52,6 +61,15 @@ _type == "Intro"]
   images
   }`;
 
+const FEEDBACK_QUERY = `*[
+_type == "Testimonials"]
+{
+  title,
+  feedback,
+  who,
+  position
+}`;
+
 // Function to build the URL for a given Sanity image source
 const urlFor = (source: SanityImageSource) =>
   projectId && dataset
@@ -63,11 +81,11 @@ const options = { next: { revalidate: 30 } };
 
 // The main component for the index page
 export default async function IndexPage() {
-  const [landing, intro] = await Promise.all([
+  const [landing, intro, feedback] = await Promise.all([
     client.fetch<SanityDocument[]>(LANDING_QUERY, {}, options),
     client.fetch<SanityDocument[]>(INTRO_QUERY, {}, options),
+    client.fetch<SanityDocument[]>(FEEDBACK_QUERY, {}, options),
   ]);
-
 
   const landingData = {
     title: landing[0].title,
@@ -86,10 +104,17 @@ export default async function IndexPage() {
     }))
   };
 
+  const feedbackData = feedback.map((item) => ({
+    title: item.title,
+    feedback: item.feedback,
+    who: item.who,
+    position: item.position,
+  }));
   return (
     <main>
-      <Landing data={landingData as LandingProps}/>
+      <Landing data={landingData as LandingProps} />
       <Intro data={introData as IntroProps} />
-    </main>
+      <Testimonials data={feedbackData as FeedbackProps[]} />
+     </main>
   );
 }
