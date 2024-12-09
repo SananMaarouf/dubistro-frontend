@@ -108,7 +108,7 @@ export default function Landing({ data }: LandingProps) {
         {/* video */}
         <div
           id="youtube-player"
-          className="absolute w-[100vw] h-[100vh] min-w-[177.77vh] min-h-[56.25vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          className="absolute w-[100vw] h-[100vh] min-w-[177.77vh] min-h-[56.25vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[1.2]"
         />
       </div>
 
