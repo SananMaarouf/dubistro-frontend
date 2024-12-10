@@ -16,7 +16,7 @@ interface IntroProps {
 export default function Intro({ data }: IntroProps) {
   return (
     <motion.section
-      className="flex flex-col text-center px-4 sm:px-6 lg:px-8 mx-auto bg-[#E9EEEC] text-green-900 min-h-screen"
+      className="flex flex-col text-center px-4 sm:px-6 lg:px-8 mx-auto bg-[#E9EEEC] text-green-900 h-fit mb-12"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -31,7 +31,7 @@ export default function Intro({ data }: IntroProps) {
       </motion.h1>
       <div className="flex flex-col items-center">
         <motion.p
-          className="mb-8 text-3xl w-3/4 text-center"
+          className="mb-8 text-3xl w-3/4 text-center whitespace-pre-line"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}

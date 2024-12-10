@@ -123,7 +123,7 @@ export default function Landing({ data }: LandingProps) {
         transition={{ duration: 0.5 }}
       >
         <motion.h1
-          className="text-6xl font-bold text-white"
+          className="text-6xl font-bold text-white whitespace-pre-line text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -132,7 +132,7 @@ export default function Landing({ data }: LandingProps) {
         </motion.h1>
         <a href="mailto:duo@leduodubistro.no?subject=Booking">
           <motion.button
-            className='px-4 py-2 bg-white text-green-900 mt-5 rounded-lg text-3xl uppercase hover:bg-green-900 hover:text-white transition duration-300'
+            className='px-4 py-2 bg-white text-green-900 mt-10 rounded-lg text-3xl uppercase hover:bg-green-900 hover:text-white transition duration-300'
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >

@@ -27,7 +27,7 @@ export default function Performance({ data }: PerformanceProps) {
         >
           Du kan enkelt booke oss til
         </motion.h2>
-        <div className="flex flex-col gap-8 max-w-screen-md text-center mx-auto">
+        <div className="flex flex-col gap-8 max-w-screen-md mx-auto whitespace-pre-line text-center">
           {data.map((performance, index) => (
             <motion.div
               key={index}
