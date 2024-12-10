@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${garamond.className} bg-[#E9EEEC] min-h-screen flex flex-col`}      >
+        className={`${garamond.className} bg-[#E9EEEC]`}      >
         <Navbar />
         {children}
       </body>
