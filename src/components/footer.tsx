@@ -86,7 +86,7 @@ export default function Footer({ data }: FooterProps) {
         <div className="text-sm text-white opacity-70 text-center">
           <p>© {currentYear} Le Duo Du Bistro</p>
           <p className="mt-1">
-            Built by <a href="https://sanan.no" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">Sanan Maarouf</a>
+            Built by <a href="https://sanan.no" className="hover:text-white underline underline-offset-2 transition-colors" target="_blank" rel="noopener noreferrer">Sanan Maarouf</a>
           </p>
         </div>
       </motion.div>

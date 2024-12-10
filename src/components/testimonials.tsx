@@ -43,9 +43,9 @@ export default function Testimonials({ data }: TestimonialsProps) {
           opts={{ loop: true }}
           plugins={[Autoplay({ delay: 4000 })]}
         >
-          <CarouselNext className="hidden md:block" />
-          <CarouselPrevious className="hidden md:block" />
-          <CarouselContent>
+        <CarouselNext   />
+        <CarouselPrevious  />
+          <CarouselContent >
             {data.map((testimonial, index) => (
               <CarouselItem key={index} className="lg:basis-1/2 my-4">
                 <motion.div

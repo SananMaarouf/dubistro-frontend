@@ -22,8 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={garamond.className}
-      >
+        className={`${garamond.className} bg-[#E9EEEC]`}      >
         <Navbar />
         {children}
       </body>
