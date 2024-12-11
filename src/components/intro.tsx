@@ -31,7 +31,7 @@ export default function Intro({ data }: IntroProps) {
       </motion.h1>
       <div className="flex flex-col items-center">
         <motion.p
-          className="mb-8 text-3xl w-3/4 text-center whitespace-pre-line"
+          className="mb-8 text-xl lg:text-3xl w-3/4 text-center whitespace-pre-line"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
