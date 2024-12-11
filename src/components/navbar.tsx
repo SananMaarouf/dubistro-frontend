@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 export default function Navbar() {
   return (
     <motion.nav
-      className="flex items-center md:justify-center p-4 bg-[#E9EEEC] border-b border-gray-300"
+      className="flex items-center md:justify-center p-4 bg-[#E9EEEC] "
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
