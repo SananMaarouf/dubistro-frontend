@@ -14,15 +14,10 @@ const garamond = EB_Garamond({
   style: "normal",
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
   return (
     <html lang="en">
-      <body
-        className={`${garamond.className} bg-[#E9EEEC]`}      >
+      <body className={`${garamond.className} bg-[#E9EEEC]`}>
         <Navbar />
         {children}
       </body>
