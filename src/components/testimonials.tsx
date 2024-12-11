@@ -90,7 +90,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
         </Carousel>
         <div className="flex justify-center mt-4 lg:hidden">
           <p className="text-md text-emerald-800">
-            {current} / {count+1}
+            {current} / {count}
           </p>
         </div>
       </div>
