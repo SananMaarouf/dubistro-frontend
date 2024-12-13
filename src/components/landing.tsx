@@ -1,6 +1,9 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
+import { useLanguage } from "@/context/LanguageContext";
+import LanguageSwitcher from "@/components/languageSwitcher";
+
 
 // YouTube Player types
 interface YT {
@@ -57,6 +60,7 @@ export default function Landing({ data }: LandingProps) {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const playerRef = useRef<Player | null>(null);
+  const { language } = useLanguage();
 
   useEffect(() => {
     // Load YouTube API
@@ -131,7 +135,7 @@ export default function Landing({ data }: LandingProps) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          {ctaText.nb}
+          {ctaText[language]}
         </motion.h1>
         <a href="mailto:duo@leduodubistro.no?subject=Booking">
           <motion.button

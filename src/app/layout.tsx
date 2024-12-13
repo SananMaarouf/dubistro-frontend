@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import { EB_Garamond } from 'next/font/google';
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: "Le Duo Du Bistro",
@@ -18,8 +19,10 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
   return (
     <html lang="en">
       <body className={`${garamond.className} bg-[#E9EEEC]`}>
-        <Navbar />
-        {children}
+        <LanguageProvider>
+          <Navbar />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

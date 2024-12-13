@@ -1,32 +1,28 @@
-"use client";
-import React from 'react';
+// TypeScript
+'use client';
 import { motion } from 'motion/react';
-
+import { useLanguage } from '@/context/LanguageContext';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 export default function Navbar() {
+  const { language } = useLanguage();
+
   return (
-    <motion.nav
-      className="flex items-center md:justify-center p-4 bg-[#E9EEEC] "
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ 
-        backgroundColor: "#E9EEEC",
-        boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
-      }}
-    >
-      <motion.header
+    <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-center py-4">
+      <LanguageSwitcher />
+      <motion.a
+        href="/"
         className="text-2xl md:text-3xl uppercase text-green-800 font-bold mx-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        whileHover={{ 
-          color: "#2F6B46",
-          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.1)",
-          letterSpacing: "0.05em"
+        whileHover={{
+          color: '#2F6B46',
+          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)',
+          letterSpacing: '0.05em',
         }}
       >
-        Le duo du bistro
-      </motion.header>
-    </motion.nav>
+        {language === 'nb' ? 'Le duo duo bistro' : 'Duo du bistro'}
+      </motion.a>
+    </nav>
   );
 }
