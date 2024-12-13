@@ -15,7 +15,10 @@ interface LandingProps {
   image: string;
   alt: string;
   videoId: string;
-  ctaText: string;
+  ctaText: {
+    nb: string;
+    fr: string;
+  }
 }
 
 interface IntroProps {

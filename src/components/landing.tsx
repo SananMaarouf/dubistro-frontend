@@ -45,7 +45,10 @@ interface LandingProps {
     image: string;
     alt: string;
     videoId: string;
-    ctaText: string;
+    ctaText: {
+      nb: string;
+      fr: string;
+    }
   }
 }
 
@@ -128,7 +131,7 @@ export default function Landing({ data }: LandingProps) {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          {ctaText ?? 'Levende fransk musikk til alle anledninger '}
+          {ctaText.nb}
         </motion.h1>
         <a href="mailto:duo@leduodubistro.no?subject=Booking">
           <motion.button
