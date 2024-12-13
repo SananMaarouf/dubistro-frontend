@@ -2,8 +2,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from "@/context/LanguageContext";
-import LanguageSwitcher from "@/components/languageSwitcher";
-
 
 // YouTube Player types
 interface YT {

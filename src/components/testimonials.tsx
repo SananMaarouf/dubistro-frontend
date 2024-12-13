@@ -12,13 +12,20 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { motion } from 'motion/react';
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface TestimonialsProps {
   data: {
     title: string;
-    feedback: string;
+    feedback: {
+      nb: string;
+      fr: string;
+    }
     who: string;
-    position: string;
+    position: {
+      nb: string;
+      fr: string;
+    }
   }[];
 }
 
@@ -26,7 +33,8 @@ export default function Testimonials({ data }: TestimonialsProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0)
   const [count, setCount] = useState(0)
-  
+  const { language } = useLanguage();
+
   useEffect(() => {
     if (!api) {
       return
@@ -54,7 +62,10 @@ export default function Testimonials({ data }: TestimonialsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          Tilbakemeldinger
+          {/* if language is nb render "tilbakemeldinger, if is fr, render "oui" */}
+          {
+            language === "nb" ? "Tilbakemeldinger" : "Retour"
+          }
         </motion.h2>
         {/* feedback card container */}
         <Carousel
@@ -78,10 +89,10 @@ export default function Testimonials({ data }: TestimonialsProps) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                 >
-                  <p className="text-lg mb-4 my-auto">{testimonial.feedback}</p>
+                  <p className="text-lg mb-4 my-auto">{testimonial.feedback[language]}</p>
                   <div className="mt-auto">
                     <p className="font-bold">{testimonial.who}</p>
-                    <p className="font-semibold">{testimonial.position}</p>
+                    <p className="font-semibold">{testimonial.position[language]}</p>
                   </div>
                 </motion.div>
               </CarouselItem>

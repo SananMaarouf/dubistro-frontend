@@ -1,16 +1,28 @@
 "use client";
 
 import { motion } from 'motion/react';
+import { useLanguage } from "@/context/LanguageContext";
+
 
 interface PerformanceProps {
   data: {
-    performanceType: string;
-    description: string;
-    ctaText: string;
+    performanceType: {
+      nb: string;
+      fr: string;
+    }
+    description: {
+      nb: string;
+      fr: string;
+    }
+    ctaText: {
+      nb: string;
+      fr: string;
+    }
   }[];
 }
 
 export default function Performance({ data }: PerformanceProps) {
+  const { language } = useLanguage();
   return (
     <motion.section
       className="bg-[#FAF2EE] text-emerald-900 h-fit py-12"
@@ -25,7 +37,12 @@ export default function Performance({ data }: PerformanceProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          Du kan enkelt booke oss til
+          {
+            language === "nb" ? 
+              "Du kan enkelt booke oss til" 
+              : 
+              "Vous pouvez facilement nous réserver pour"
+          }
         </motion.h2>
         <div className="flex flex-col gap-8 max-w-screen-md mx-auto whitespace-pre-line text-center">
           {data.map((performance, index) => (
@@ -36,15 +53,15 @@ export default function Performance({ data }: PerformanceProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <p className="text-3xl lg:text-4xl mb-4 font-bold">{performance.performanceType}</p>
-              <p className="text-xl lg:text-3xl">{performance.description}</p>
-              <a href={`mailto:duo@leduodubistro.no?subject=${encodeURIComponent(performance.performanceType + '-booking')}`}>
+              <p className="text-3xl lg:text-4xl mb-4 font-bold">{performance.performanceType[language]}</p>
+              <p className="text-xl lg:text-3xl">{performance.description[language]}</p>
+              <a href={`mailto:duo@leduodubistro.no?subject=${encodeURIComponent(performance.performanceType[language] + '-booking')}`}>
                 <motion.button
                   className="text-xl lg:text-2xl px-4 py-2 mt-6 bg-emerald-800 rounded-lg text-white hover:bg-emerald-700 transition duration-300"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  {performance.ctaText}
+                  {performance.ctaText[language]}
                 </motion.button>
               </a>
             </motion.div>

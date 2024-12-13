@@ -22,8 +22,14 @@ interface LandingProps {
 }
 
 interface IntroProps {
-  title: string;
-  description: string;
+  title: {
+    nb: string;
+    fr: string;
+  }
+  description: {
+    nb: string;
+    fr: string;
+  }
   imageURLS: [
     {
       alt: string;
@@ -42,22 +48,46 @@ interface IntroImage {
 
 interface FeedbackProps {
   title: string;
-  feedback: string;
+  feedback: {
+    nb: string
+    fr: string
+  }
   who: string;
-  position: string;
+  position: {
+    nb: string
+    fr: string
+  }
 }
 
 interface PerformanceProps {
-  performanceType: string;
-  description: string;
-  ctaText: string;
+  performanceType: {
+    nb: string;
+    fr: string;
+  }
+  description: {
+    nb: string;
+    fr: string;
+  }
+  ctaText: {
+    nb: string;
+    fr: string;
+  }
 }
 
 interface FooterProps {
   instagramURL: string;
-  cellNumber: number;
-  email: string;
-  address: string;
+  cellNumber: {
+    nb: string;
+    fr: string;
+  }
+  email: {
+    nb: string;
+    fr: string;
+  }
+  address: {
+    nb: string;
+    fr: string;
+  }
 }
 // Query to fetch the landing page data
 const LANDING_QUERY = `*[
@@ -72,7 +102,7 @@ const LANDING_QUERY = `*[
 const INTRO_QUERY = `*[
 _type == "Intro"]
 {
-  title,
+  intro,
   description,
   images
   }`;
@@ -131,7 +161,7 @@ export default async function IndexPage() {
   };
 
   const introData = {
-    title: intro[0].title,
+    title: intro[0].intro,
     description: intro[0].description,
     imageURLS: intro[0].images.map((image: IntroImage) => ({
       alt: image.alt,

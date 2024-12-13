@@ -1,11 +1,19 @@
 'use client';
 import Image from "next/image"; // Importing the Image component from Next.js for optimized image rendering
 import { motion } from 'motion/react';
+import { useLanguage } from "@/context/LanguageContext";
+
 
 interface IntroProps {
   data: {
-    title: string;
-    description: string;
+    title: {
+      nb: string;
+      fr: string;
+    }
+    description: {
+      nb: string;
+      fr: string;
+    }
     imageURLS: [{
       alt: string;
       url: string;
@@ -14,6 +22,8 @@ interface IntroProps {
 }
 
 export default function Intro({ data }: IntroProps) {
+    const { language } = useLanguage();
+  
   return (
     <motion.section
       className="flex flex-col text-center px-4 sm:px-6 lg:px-8 mx-auto bg-[#E9EEEC] text-green-900 h-fit mb-12"
@@ -27,7 +37,7 @@ export default function Intro({ data }: IntroProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        {data.title}
+        {data.title[language]}
       </motion.h1>
       <div className="flex flex-col items-center">
         <motion.p
@@ -36,7 +46,7 @@ export default function Intro({ data }: IntroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          {data.description}
+          {data.description[language]}
         </motion.p>
         <div className="flex flex-wrap justify-center gap-4 w-full">
           {data.imageURLS?.map((image, index) => (

@@ -1,17 +1,28 @@
 "use client"
 import { motion } from 'motion/react';
+import { useLanguage } from "@/context/LanguageContext";
 
 interface FooterProps {
   data: {
     instagramURL: string;
-    cellNumber: number;
-    email: string;
-    address: string;
+    cellNumber: {
+      nb: string;
+      fr: string;
+    }
+    email: {
+      nb: string;
+      fr: string;
+    }
+    address: {
+      nb: string;
+      fr: string;
+    }
   };
 }
 
 export default function Footer({ data }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const { language } = useLanguage();
 
   return (
     <motion.footer 
@@ -36,15 +47,15 @@ export default function Footer({ data }: FooterProps) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <p className="mb-2">Telefon: {data.cellNumber}</p>
-            <p className="mb-2">Epost:
+            <p className="mb-2">{data.cellNumber[language]}</p>
+            <p className="mb-2">
               <span>
-                <a href={`mailto:${data.email}`} className="mb-2 hover:underline decoration-2 transition-colors cursor-pointer">
-                  {" "}{data.email}
+                <a href={`mailto:duo@leduodubistro.no`} className="mb-2 hover:underline decoration-2 transition-colors cursor-pointer">
+                  {" "}{data.email[language]}
                 </a>
               </span>
             </p>
-            <p className="mb-2">{data.address}</p>
+            <p className="mb-2">{data.address[language]}</p>
           </motion.div>
           <motion.a 
             href={data.instagramURL}
