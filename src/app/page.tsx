@@ -6,7 +6,6 @@ import { type SanityDocument } from "next-sanity"; // Importing the SanityDocume
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types"; // Importing the SanityImageSource type for type checking
 import Testimonials from "@/components/testimonials";
 import Performance from "@/components/performances";
-import Footer from "@/components/footer";
 
 // Extracting projectId and dataset from the Sanity client configuration
 const { projectId, dataset } = client.config();
@@ -74,21 +73,6 @@ interface PerformanceProps {
   }
 }
 
-interface FooterProps {
-  instagramURL: string;
-  cellNumber: {
-    nb: string;
-    fr: string;
-  }
-  email: {
-    nb: string;
-    fr: string;
-  }
-  address: {
-    nb: string;
-    fr: string;
-  }
-}
 // Query to fetch the landing page data
 const LANDING_QUERY = `*[
   _type == "Landing"]
@@ -124,15 +108,6 @@ const PERFORMANCE_QUERY = `*[
     ctaText
   }`;
 
-const FOOTER_QUERY = `*[
-  _type == "Footer"]
-  {
-    instagramURL,
-    cellNumber,
-    email,
-    address
-  }`;
-
 // Function to build the URL for a given Sanity image source
 const urlFor = (source: SanityImageSource) =>
   projectId && dataset
@@ -140,16 +115,15 @@ const urlFor = (source: SanityImageSource) =>
     : null;
 
 // Options for the fetch requests, including revalidation time
-const options = { next: { revalidate: 30 } };
+const options = { next: { revalidate: 500 } };
 
 // The main component for the index page
 export default async function IndexPage() {
-  const [landing, intro, feedback, performance, footer] = await Promise.all([
+  const [landing, intro, feedback, performance] = await Promise.all([
     client.fetch<SanityDocument[]>(LANDING_QUERY, {}, options),
     client.fetch<SanityDocument[]>(INTRO_QUERY, {}, options),
     client.fetch<SanityDocument[]>(FEEDBACK_QUERY, {}, options),
     client.fetch<SanityDocument[]>(PERFORMANCE_QUERY, {}, options),
-    client.fetch<SanityDocument[]>(FOOTER_QUERY, {}, options),
   ]);
 
   const landingData = {
@@ -182,20 +156,12 @@ export default async function IndexPage() {
     ctaText: item.ctaText,
   }));
 
-  const footerData = {
-    instagramURL: footer[0].instagramURL,
-    cellNumber: footer[0].cellNumber,
-    email: footer[0].email,
-    address: footer[0].address,
-  };
-
   return (
     <main>
       <Landing data={landingData as LandingProps} />
       <Intro data={introData as IntroProps} />
       <Testimonials data={feedbackData as FeedbackProps[]} />
       <Performance data={performanceData as PerformanceProps[]} />
-      <Footer data={footerData as FooterProps} />
     </main>
   );
 }

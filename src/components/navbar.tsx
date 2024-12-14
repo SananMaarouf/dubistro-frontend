@@ -7,7 +7,7 @@ export default function Navbar() {
   const { language } = useLanguage();
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-center py-4">
+    <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-center py-4 bg-[#E9EEEC]">
       <LanguageSwitcher />
       <motion.a
         href="/"
