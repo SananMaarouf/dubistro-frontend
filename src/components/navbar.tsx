@@ -21,7 +21,7 @@ export default function Navbar() {
           letterSpacing: '0.05em',
         }}
       >
-        {language === 'nb' ? 'Le duo duo bistro' : 'Duo du bistro'}
+        Le duo du bistro
       </motion.a>
     </nav>
   );
