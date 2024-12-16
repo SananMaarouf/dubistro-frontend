@@ -58,12 +58,23 @@ export default function Performance({ data }: PerformanceProps) {
                         >
                             <div className="flex flex-row mb-4 items-center justify-center">
                                 <p className="text-3xl lg:text-4xl font-bold">{performance.performanceType[language]}</p>
-                                <Image
-                                    src={performance.image.asset}
-                                    width={70}
-                                    height={70}
-                                    alt={performance.performanceType[language]}
-                                />
+                                <motion.div
+                                    initial={{opacity: 1, rotate: 0}}
+                                    animate={{rotate: [0, 3, -3, 0]}}
+                                    transition={{
+                                        duration: 3,
+                                        repeat: Infinity,
+                                        repeatType: "loop",
+                                        delay: index % 2 === 0 ? 0 : 1.5 // Alternate between images
+                                    }}
+                                >
+                                    <Image
+                                        src={performance.image.asset}
+                                        width={70}
+                                        height={70}
+                                        alt={performance.performanceType[language]}
+                                    />
+                                </motion.div>
                             </div>
                             <p className="text-xl lg:text-3xl">{performance.description[language]}</p>
                             <a href={`mailto:duo@leduodubistro.no?subject=${encodeURIComponent(performance.performanceType[language] + '-booking')}`}>
