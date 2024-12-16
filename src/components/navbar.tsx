@@ -1,10 +1,8 @@
 // TypeScript
 'use client';
 import { motion } from 'motion/react';
-import { useLanguage } from '@/context/LanguageContext';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 export default function Navbar() {
-  const { language } = useLanguage();
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-20 flex items-center justify-center py-4 bg-[#E9EEEC]">
