@@ -71,6 +71,9 @@ interface PerformanceProps {
     nb: string;
     fr: string;
   }
+  image: {
+    asset: string;
+  }
 }
 
 // Query to fetch the landing page data
@@ -105,7 +108,8 @@ const PERFORMANCE_QUERY = `*[
   {
     performanceType,
     description,
-    ctaText
+    ctaText,
+    image
   }`;
 
 // Function to build the URL for a given Sanity image source
@@ -154,6 +158,9 @@ export default async function IndexPage() {
     performanceType: item.performanceType,
     description: item.description,
     ctaText: item.ctaText,
+    image: {
+      asset: urlFor(item.image.asset)?.width(800).height(800).url(),
+    } 
   }));
 
   return (

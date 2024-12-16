@@ -1,6 +1,3 @@
-// TypeScript
-// filepath: /src/app/layout.tsx
-
 import type { Metadata } from 'next';
 import './globals.css';
 import Navbar from '@/components/navbar';
@@ -8,7 +5,6 @@ import Footer from '@/components/footer';
 import { EB_Garamond } from 'next/font/google';
 import { client } from '@/sanity/client';
 import { LanguageProvider } from '@/context/LanguageContext';
-import { SanityDocument } from 'next-sanity';
 
 export const metadata: Metadata = {
   title: 'Le Duo Du Bistro',
