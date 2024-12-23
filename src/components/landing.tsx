@@ -50,11 +50,15 @@ interface LandingProps {
       nb: string;
       fr: string;
     }
+    ctaBtnText: {
+      nb: string;
+      fr: string;
+    }
   }
 }
 
 export default function Landing({ data }: LandingProps) {
-  const { alt, image, videoId, ctaText } = data;
+  const { alt, image, videoId, ctaText, ctaBtnText } = data;
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const playerRef = useRef<Player | null>(null);
@@ -141,7 +145,7 @@ export default function Landing({ data }: LandingProps) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            Book nå
+            {ctaBtnText[language]}
           </motion.button>
         </a>
       </motion.div>

@@ -18,6 +18,10 @@ interface LandingProps {
     nb: string;
     fr: string;
   }
+  ctaBtnText: {
+    nb: string;
+    fr: string;
+  }
 }
 
 interface IntroProps {
@@ -83,7 +87,8 @@ const LANDING_QUERY = `*[
     title,
     image,
     youtubeUrl,
-    ctaText
+    ctaText,
+    ctaBtnText
   }`;
 
 const INTRO_QUERY = `*[
@@ -136,6 +141,7 @@ export default async function IndexPage() {
     image: urlFor(landing[0].image)?.width(800).height(800).url() || '',
     videoId: landing[0].youtubeUrl,
     ctaText: landing[0].ctaText,
+    ctaBtnText: landing[0].ctaBtnText,
   };
 
   const introData = {
