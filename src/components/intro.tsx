@@ -2,26 +2,9 @@
 import Image from "next/image"; // Importing the Image component from Next.js for optimized image rendering
 import { motion } from 'motion/react';
 import { useLanguage } from "@/context/LanguageContext";
+import { IntroProps } from "@/lib/types";
 
-
-interface IntroProps {
-  data: {
-    title: {
-      nb: string;
-      fr: string;
-    }
-    description: {
-      nb: string;
-      fr: string;
-    }
-    imageURLS: [{
-      alt: string;
-      url: string;
-    }]
-  }
-}
-
-export default function Intro({ data }: IntroProps) {
+export default function Intro({ data }: { data: IntroProps }) {
     const { language } = useLanguage();
   
   return (
@@ -61,7 +44,6 @@ export default function Intro({ data }: IntroProps) {
                 alt={image.alt || "Gallery image"}
                 width={1000}
                 height={1000}
-                className="object-cover w-full h-full"
               />
             </motion.div>
           ))}

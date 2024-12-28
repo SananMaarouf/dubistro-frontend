@@ -14,17 +14,16 @@ export default function Landing({ data }: { data: LandingProps }) {
 		<div className="relative w-full h-screen overflow-clip">
 			{/* fallback image */}
 				<motion.div
-					className="absolute w-full h-full z-10"
-					initial={{ opacity: 1 }}
+				 	initial={{ opacity: 1 }}
 					animate={{ opacity: 0 }}
 					transition={{ duration: 1.5, delay: 1.5 }}
-				>
+					className="absolute w-full h-full z-10">
 					<Image
 						src={image}
-						width={1920}
-						height={1080}
+						width={1000}
+						height={1000}
 						alt="Maxim & Sondre"
-						className="absolute inset-0 w-full h-full object-cover"
+						className="h-full w-full object-cover"
 					/>
 				</motion.div>
 				<video
@@ -42,7 +41,7 @@ export default function Landing({ data }: { data: LandingProps }) {
 				</video>
 
 			{/* overlay */}
-			<div className="absolute inset-0 bg-black/30" />
+			<div className="absolute inset-0 bg-black/40" />
 
 			{/* landing content */}
 			<motion.div

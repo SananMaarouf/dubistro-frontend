@@ -13,23 +13,9 @@ import Autoplay from "embla-carousel-autoplay";
 import { motion } from 'motion/react';
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import type { FeedbackProps } from "@/lib/types";
 
-interface TestimonialsProps {
-  data: {
-    title: string;
-    feedback: {
-      nb: string;
-      fr: string;
-    }
-    who: string;
-    position: {
-      nb: string;
-      fr: string;
-    }
-  }[];
-}
-
-export default function Testimonials({ data }: TestimonialsProps) {
+export default function Testimonials({ data }: { data: FeedbackProps[] }) {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0)
   const [count, setCount] = useState(0)

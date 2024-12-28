@@ -32,7 +32,7 @@ export default async function IndexPage() {
 
   const landingData = {
     title: landing[0].title,
-    image: urlFor(landing[0].image)?.width(800).height(800).url() || '',
+    image: urlFor(landing[0].image)?.width(1000).height(1000).url() || '',
     videoId: landing[0].youtubeUrl,
     ctaText: landing[0].ctaText,
     ctaBtnText: landing[0].ctaBtnText,
@@ -44,7 +44,7 @@ export default async function IndexPage() {
     description: intro[0].description,
     imageURLS: intro[0].images.map((image: IntroImage) => ({
       alt: image.alt,
-      url: urlFor(image.asset)?.width(1920).height(1080).url() || '',
+      url: urlFor(image.asset)?.width(1000).height(1000).url() || '',
     }))
   };
 

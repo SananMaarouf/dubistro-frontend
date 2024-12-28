@@ -4,26 +4,9 @@
 'use client';
 import { motion } from 'motion/react';
 import { useLanguage } from '@/context/LanguageContext';
+import type { FooterProps } from '@/lib/types';
 
-interface FooterProps {
-  data: {
-    instagramURL: string;
-    cellNumber: {
-      nb: string;
-      fr: string;
-    };
-    email: {
-      nb: string;
-      fr: string;
-    };
-    address: {
-      nb: string;
-      fr: string;
-    };
-  };
-}
-
-export default function Footer({ data }: FooterProps) {
+export default function Footer({ data }: { data: FooterProps }) {
   const currentYear = new Date().getFullYear();
   const { language } = useLanguage();
 
