@@ -4,7 +4,8 @@ export const LANDING_QUERY = `*[
     image,
     youtubeUrl,
     ctaText,
-    ctaBtnText
+    ctaBtnText,
+    "video": video.asset->url
   }`;
 
 export const INTRO_QUERY = `*[

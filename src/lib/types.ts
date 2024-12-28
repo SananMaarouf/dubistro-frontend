@@ -1,7 +1,7 @@
 export interface LandingProps {
 		image: string;
-		alt: string;
 		videoId: string;
+		video: string;
 		ctaText: {
 			nb: string;
 			fr: string;
@@ -10,6 +10,27 @@ export interface LandingProps {
 			nb: string;
 			fr: string;
 		}
+}
+
+export interface PerformanceProps {
+	performanceType: {
+		nb: string;
+		fr: string;
+		_type: string;
+	};
+	description: {
+		nb: string;
+		fr: string;
+		_type: string;
+	};
+	ctaText: {
+		nb: string;
+		fr: string;
+		_type: string;
+	};
+	image: {
+		asset: string;
+	};
 }
 
 export interface IntroProps {
@@ -48,27 +69,6 @@ export interface FeedbackProps {
 		nb: string
 		fr: string
 	}
-}
-
-export interface PerformanceProps {
-	performanceType: {
-		nb: string;
-		fr: string;
-		_type: string;
-	};
-	description: {
-		nb: string;
-		fr: string;
-		_type: string;
-	};
-	ctaText: {
-		nb: string;
-		fr: string;
-		_type: string;
-	};
-	image: {
-		asset: string;
-	};
 }
 
 export interface FooterProps {
