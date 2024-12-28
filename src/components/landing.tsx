@@ -60,7 +60,12 @@ export default function Landing({ data }: { data: LandingProps }) {
 				</motion.h1>
 				<a href="mailto:duo@leduodubistro.no?subject=Booking">
 					<motion.button
-						className='px-4 py-2 bg-white text-green-900 mt-10 rounded-lg text-3xl uppercase hover:bg-green-900 hover:text-white transition duration-300'
+						className='
+						px-4 py-2 
+						transition duration-300
+						mt-10 rounded-lg text-3xl mx-24 
+						bg-white text-green-900 uppercase 
+						hover:bg-green-900 hover:text-white'
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9 }}
 					>
