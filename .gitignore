@@ -38,6 +38,9 @@ yarn-error.log*
 # jetbrains
 /.idea/
 
+# vscode
+/.vscode/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
