@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from "@/context/LanguageContext";
+import type { LandingProps} from "@/lib/types";
 
 // YouTube Player types
 interface YT {
@@ -41,24 +42,8 @@ declare global {
   }
 }
 
-interface LandingProps {
-  data: {
-    image: string;
-    alt: string;
-    videoId: string;
-    ctaText: {
-      nb: string;
-      fr: string;
-    }
-    ctaBtnText: {
-      nb: string;
-      fr: string;
-    }
-  }
-}
 
-export default function Landing({ data }: LandingProps) {
-  const { alt, image, videoId, ctaText, ctaBtnText } = data;
+export default function Landing({ alt, image, videoId, ctaText, ctaBtnText }: LandingProps) {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const playerRef = useRef<Player | null>(null);

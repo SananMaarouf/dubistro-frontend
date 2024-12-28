@@ -1,10 +1,11 @@
-import type { Metadata } from 'next';
 import './globals.css';
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
-import { EB_Garamond } from 'next/font/google';
+import type { Metadata } from 'next';
 import { client } from '@/sanity/client';
+import { Navbar, Footer } from '@/components';
+import { EB_Garamond } from 'next/font/google';
 import { LanguageProvider } from '@/context/LanguageContext';
+import { FOOTER_QUERY } from '@/lib/queries';
+import { FooterProps } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: 'Le Duo Du Bistro',
@@ -17,39 +18,12 @@ const garamond = EB_Garamond({
   style: 'normal',
 });
 
-interface FooterProps {
-  instagramURL: string;
-  cellNumber: {
-    nb: string;
-    fr: string;
-  };
-  email: {
-    nb: string;
-    fr: string;
-  };
-  address: {
-    nb: string;
-    fr: string;
-  };
-}
-
-const FOOTER_QUERY = `*[_type == "Footer"][0]{
-  instagramURL,
-  cellNumber,
-  email,
-  address
-}`;
-
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({children}: {children: React.ReactNode;}) {
+  
   // Fetch footer data
   const footerData: FooterProps = await client.fetch(FOOTER_QUERY);
-
   return (
-    <html lang="en" className="overscroll-none">
+    <html className="overscroll-none">
       <body className={`${garamond.className} bg-[#E9EEEC]`}>
         <LanguageProvider>
           <Navbar />

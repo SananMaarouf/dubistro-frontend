@@ -1,12 +1,12 @@
-// TypeScript
 'use client';
+
 import { motion } from 'motion/react';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+
 export default function Navbar() {
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-20 flex items-center md:justify-center py-4 bg-[#E9EEEC]">
-      <LanguageSwitcher />
       <motion.a
         href="/"
         className="text-2xl md:text-3xl ml-4 md:ml-0 uppercase text-green-800 font-bold"
@@ -21,6 +21,7 @@ export default function Navbar() {
       >
         Le duo du bistro
       </motion.a>
+      <LanguageSwitcher />
     </nav>
   );
 }

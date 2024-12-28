@@ -1,50 +1,33 @@
 'use client';
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { motion } from 'motion/react';
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 const LanguageSwitcher = () => {
   const { language, setLanguage } = useLanguage();
 
   return (
-    <motion.div
-      className="absolute my-auto right-2 md:right-4 z-50"
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
+    <ToggleGroup 
+      type="single" 
+      value={language}
+      onValueChange={(value) => value && setLanguage(value as 'nb' | 'fr')}
+      className="bg-emerald-800 rounded-full p-0.5 shadow-lg flex gap-0.5 absolute right-2"
     >
-      <div className="relative px-0.5 md:px-1 bg-emerald-800 rounded-full shadow-lg">
-        <motion.div
-          className="absolute inset-1 w-[32px] md:w-[42px] h-[32px] md:h-[42px] bg-emerald-300 rounded-full"
-          animate={{
-            x: language === 'nb' ? 0 : 'calc(100% + 4px)',
-          }}
-          transition={{ type: "spring", stiffness: 300, damping: 40 }}
-        />
-        <div className="relative flex gap-0.5 md:gap-1">
-          <motion.button
-            onClick={() => setLanguage('nb')}
-            className={`p-2 md:p-3 text-base md:text-xl rounded-full transition-colors duration-300 z-10 ${
-              language === 'nb' ? 'text-white' : 'text-emerald-900'
-            }`}
-            whileTap={{ scale: 0.9 }}
-            title="Norsk"
-          >
-            🇳🇴
-          </motion.button>
-          <motion.button
-            onClick={() => setLanguage('fr')}
-            className={`p-2 md:p-3 text-base md:text-xl rounded-full transition-colors duration-300 z-10 ${
-              language === 'fr' ? 'text-white' : 'text-emerald-900'
-            }`}
-            whileTap={{ scale: 0.9 }}
-            title="Français"
-          >
-            🇫🇷
-          </motion.button>
-        </div>
-      </div>
-    </motion.div>
+      <ToggleGroupItem 
+        value="nb" 
+        aria-label="Norwegian" 
+        className="data-[state=on]:bg-emerald-600 rounded-full p-1"
+      >
+        🇳🇴
+      </ToggleGroupItem>
+      <ToggleGroupItem 
+        value="fr" 
+        aria-label="French" 
+        className="data-[state=on]:bg-emerald-600 rounded-full p-1"
+      >
+        🇫🇷
+      </ToggleGroupItem>
+    </ToggleGroup>
   );
 };
 
