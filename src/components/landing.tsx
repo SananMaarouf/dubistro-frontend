@@ -7,24 +7,23 @@ import type { LandingProps } from "@/lib/types";
 export default function Landing({ data }: { data: LandingProps }) {
 	const [isMuted, setIsMuted] = useState(true);
 	const { language } = useLanguage();
-	const {  ctaText, ctaBtnText, video } = data;
+	const { ctaText, ctaBtnText, video } = data;
 
 	return (
 		<div className="relative w-full h-screen overflow-clip">
-			
-				<video
-					className="absolute inset-0 w-full h-full object-cover"
-					autoPlay
-					loop
-					muted={isMuted}
-					playsInline
-					preload={'auto'}
-					controlsList={'nodownload'}
-					disablePictureInPicture
-				>
-					<source src={video} type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
+			<video
+				className="absolute inset-0 w-full h-full object-cover"
+				autoPlay={true}
+				loop={true}
+				muted={true}
+				playsInline={true}
+				preload={'auto'}
+				controlsList={'nodownload'}
+				disablePictureInPicture={true}
+			>
+				<source src={video} type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
 
 			{/* overlay */}
 			<div className="absolute inset-0 bg-black/40" />
