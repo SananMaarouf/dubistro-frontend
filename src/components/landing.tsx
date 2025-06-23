@@ -12,20 +12,7 @@ export default function Landing({ data }: { data: LandingProps }) {
 
 	return (
 		<div className="relative w-full h-screen overflow-clip">
-			{/* fallback image */}
-				<motion.div
-				 	initial={{ opacity: 1 }}
-					animate={{ opacity: 0 }}
-					transition={{ duration: 1.5, delay: 1.5 }}
-					className="absolute w-full h-full z-10">
-					<Image
-						src={image}
-						width={1000}
-						height={1000}
-						alt="Maxim & Sondre"
-						className="h-full w-full object-cover"
-					/>
-				</motion.div>
+			
 				<video
 					className="absolute inset-0 w-full h-full object-cover"
 					autoPlay
