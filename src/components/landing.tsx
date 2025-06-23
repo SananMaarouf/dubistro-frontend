@@ -3,12 +3,11 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from "@/context/LanguageContext";
 import type { LandingProps } from "@/lib/types";
-import Image from 'next/image';
 
 export default function Landing({ data }: { data: LandingProps }) {
 	const [isMuted, setIsMuted] = useState(true);
 	const { language } = useLanguage();
-	const { image, ctaText, ctaBtnText, video } = data;
+	const {  ctaText, ctaBtnText, video } = data;
 
 	return (
 		<div className="relative w-full h-screen overflow-clip">
