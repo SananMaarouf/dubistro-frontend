@@ -13,13 +13,14 @@ export default function Landing({ data }: { data: LandingProps }) {
 		<div className="relative w-full h-screen overflow-clip">
 			<video
 				className="absolute inset-0 w-full h-full object-cover"
-				autoPlay={true}
-				loop={true}
-				muted={true}
-				playsInline={true}
+				autoPlay
+				loop
+				muted
+				playsInline
+				disablePictureInPicture
+				webkit-playsinline="true"
 				preload={'auto'}
 				controlsList={'nodownload'}
-				disablePictureInPicture={true}
 			>
 				<source src={video} type="video/mp4" />
 				Your browser does not support the video tag.
