@@ -27,8 +27,13 @@ export default defineConfig({
     },
     // Mobile Safari
     {
-      name: 'Mobile Safari',
+      name: 'mobile-safari',
       use: { ...devices['iPhone 12'] },
+    },
+    // Mobile Chrome
+    {
+      name: 'mobile-chrome',
+      use: { ...devices['Pixel 5'] },
     },
   ],
 

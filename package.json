@@ -7,11 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "playwright test",
-    "test:headed": "playwright test --headed",
-    "test:ui": "playwright test --ui",
-    "test:safari": "playwright test --project=webkit",
-    "test:mobile-safari": "playwright test --project='Mobile Safari'"
+    "test:chrome": "npx playwright test --headed --project=chromium",
+    "test:firefox": "npx playwright test --headed --project=firefox",
+    "test:safari": "npx playwright test --headed --project=webkit",
+    "test:iphone": "npx playwright test --headed --project=mobile-safari",
+    "test:android": "npx playwright test --headed --project=mobile-chrome"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
