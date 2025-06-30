@@ -1,42 +1,53 @@
 "use client"
+import { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from "@/context/LanguageContext";
 import type { LandingProps } from "@/lib/types";
 import Image from 'next/image';
 
 export default function Landing({ data }: { data: LandingProps }) {
+	const [isMuted, setIsMuted] = useState(true);
+	const videoRef = useRef<HTMLVideoElement>(null);
 	const { language } = useLanguage();
 	const { image, ctaText, ctaBtnText, video } = data;
-	console.log(video)
+
+	// Handle video mute toggle
+	const handleMuteToggle = () => {
+		if (videoRef.current) {
+			videoRef.current.muted = !videoRef.current.muted;
+			setIsMuted(videoRef.current.muted);
+		}
+	};
 	return (
 		<div className="relative w-full h-screen overflow-clip">
 			{/* fallback image */}
-				<motion.div
-				 	initial={{ opacity: 1 }}
-					animate={{ opacity: 0 }}
-					transition={{ duration: 1.5, delay: 1.5 }}
-					className="absolute w-full h-full z-10">
-					<Image
-						src={image}
-						width={1000}
-						height={1000}
-						alt="Maxim & Sondre"
-						className="h-full w-full object-cover"
-					/>
-				</motion.div>
-				<video
-					className="absolute inset-0 w-full h-full object-cover"
-					autoPlay
-					loop
-					muted
-					playsInline
-					preload={'auto'}
-					controlsList={'nodownload'}
-					disablePictureInPicture
-				>
-					<source src={video} type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
+			<motion.div
+				initial={{ opacity: 1 }}
+				animate={{ opacity: 0 }}
+				transition={{ duration: 1.5, delay: 1.5 }}
+				className="absolute w-full h-full z-10">
+				<Image
+					src={image}
+					width={1000}
+					height={1000}
+					alt="Maxim & Sondre"
+					className="h-full w-full object-cover"
+				/>
+			</motion.div>
+			<video
+			ref={videoRef}
+				className="absolute inset-0 w-full h-full object-cover"
+				autoPlay
+				loop
+				muted
+				playsInline
+				preload={'auto'}
+				controlsList={'nodownload'}
+				disablePictureInPicture
+			>
+				<source src={video} type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
 
 			{/* overlay */}
 			<div className="absolute inset-0 bg-black/40" />
@@ -73,9 +84,9 @@ export default function Landing({ data }: { data: LandingProps }) {
 			</motion.div>
 
 			{/* mute button */}
-			{/* <motion.button
+			<motion.button
 				className="absolute bottom-12 right-2 md:right-12 z-20 p-4 rounded-full bg-white/50 backdrop-blur-sm"
-				onClick={() => setIsMuted(!isMuted)}
+				onClick={handleMuteToggle}
 				whileHover={{ scale: 1.1 }}
 				whileTap={{ scale: 0.9 }}
 			>
@@ -84,7 +95,7 @@ export default function Landing({ data }: { data: LandingProps }) {
 				) : (
 					<img src="/volume-2.svg" alt="Unmuted" className="w-6 h-6" />
 				)}
-			</motion.button> */}
+			</motion.button>
 		</div>
 	);
 }
