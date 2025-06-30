@@ -9,7 +9,7 @@ export default function Landing({ data }: { data: LandingProps }) {
 	const [isMuted, setIsMuted] = useState(true);
 	const { language } = useLanguage();
 	const { image, ctaText, ctaBtnText, video } = data;
-
+	console.log(video)
 	return (
 		<div className="relative w-full h-screen overflow-clip">
 			{/* fallback image */}
@@ -30,7 +30,7 @@ export default function Landing({ data }: { data: LandingProps }) {
 					className="absolute inset-0 w-full h-full object-cover"
 					autoPlay
 					loop
-					muted={isMuted}
+					muted
 					playsInline
 					preload={'auto'}
 					controlsList={'nodownload'}
@@ -75,7 +75,7 @@ export default function Landing({ data }: { data: LandingProps }) {
 			</motion.div>
 
 			{/* mute button */}
-			<motion.button
+			{/* <motion.button
 				className="absolute bottom-12 right-2 md:right-12 z-20 p-4 rounded-full bg-white/50 backdrop-blur-sm"
 				onClick={() => setIsMuted(!isMuted)}
 				whileHover={{ scale: 1.1 }}
@@ -86,7 +86,7 @@ export default function Landing({ data }: { data: LandingProps }) {
 				) : (
 					<img src="/volume-2.svg" alt="Unmuted" className="w-6 h-6" />
 				)}
-			</motion.button>
+			</motion.button> */}
 		</div>
 	);
 }
